@@ -42,7 +42,7 @@ const [processingAlert, setProcessingAlert] = useState(false)
 const [processingSuccess, setProcessingSuccess] = useState(false)
 const [processingFailure, setProcessingFailure] = useState(false)
 const [errorMessage, setErrorMessage] = useState('')
-//Handles new 
+//Handles new
 const [newContainer, setNewContainer] = useState(false)
 const [newBarcode, setNewBarcode] = useState('')
 const [newBox, setNewBox] = useState('')
@@ -80,9 +80,9 @@ useEffect(() => {
         }
 
         if(barcode === ''){
-            setNewContainer(false) 
+            setNewContainer(false)
         }
-    },1000) 
+    },1000)
 },[barcode])
 
 useEffect(() => {
@@ -145,7 +145,7 @@ const update = async () => {
                         hideProgressBar: false,
                         closeOnClick: true,
                     });
-                }    
+                }
             } else {
                 setNewBarcode(barcode)
                 setNewContainer(true)
@@ -157,7 +157,7 @@ const update = async () => {
                     hideProgressBar: false,
                     closeOnClick: true,
                 })
-            }    
+            }
         } else {
             setLoading(false)
             playError()
@@ -168,7 +168,7 @@ const update = async () => {
                 closeOnClick: true,
             });
             // checkOutError('Barcode must be 15 characters long and begin with 310')
-        }    
+        }
 }
 
 const checkOutError = message => {
@@ -200,7 +200,7 @@ const handleEnter = (event) => {
       const index = Array.prototype.indexOf.call(form, event.target);
       event.preventDefault();
     }
-}    
+}
 
 const handleLocalStorage = async (key) => {
     const results = await localforage.getItem(key)
@@ -249,8 +249,8 @@ const manualUpload = async e => {
             autoClose: 10000,
             hideProgressBar: false,
             closeOnClick: true,
-        }); 
-    }    
+        });
+    }
 }
 
 const [playSuccess] = useSound(SuccessSound)
@@ -260,25 +260,25 @@ const [playError] = useSound(ErrorSound)
         <Fragment>
         <ToastContainer />
         <div className="container-fluid" style={{marginTop: "30px"}}>
-            <Row>  
+            <Row>
                 <Col xs="4">
                     <div className="menu sticky-top p-3 bg-light">
-                    <h1 className="display-4">Check Out </h1>
+                    <h1 className="display-4">Check out</h1>
                     <Form>
                         <InputGroup>
-                                <Input 
+                                <Input
                                     autoFocus={true}
-                                    value={barcode} 
-                                    placeholder="Enter barcode..." 
-                                    bsSize="lg" 
+                                    value={barcode}
+                                    placeholder="Container barcode"
+                                    bsSize="lg"
                                     type="text"
                                     onChange={e => setCleanBarcode(e)}
                                     onKeyDown={handleEnter}
                                 />
-                         {loading ?        
+                         {loading ?
                         <InputGroupAddon addonType="append">
                             <InputGroupText>
-                           
+
                            <Oval
                                 stroke="#000"
                                 style={{height: "2em"}}
@@ -289,7 +289,7 @@ const [playError] = useSound(ErrorSound)
                         </InputGroup>
                         {newContainer ?
                         <Fragment className="jumbotron">
-                            <Label>Create new Container</Label>
+                            <Label>Create new container</Label>
                             <NewContainer
                                 newBarcode={newBarcode}
                                 setNewBarcode={setNewBarcode}
@@ -300,7 +300,7 @@ const [playError] = useSound(ErrorSound)
                                 manualUpload={manualUpload}
                                 setNewScannedBarcode={setNewScannedBarcode}
                             />
-                        </Fragment>    
+                        </Fragment>
                         : ''}
                         {/* <div style={{height: "80px"}}>
                         <FormGroup>
@@ -314,9 +314,9 @@ const [playError] = useSound(ErrorSound)
                             {processingFailure ?
                                 <Alert color="danger">{errorMessage}</Alert>
                             : ''}
-                        </FormGroup>    
+                        </FormGroup>
                         </div>    */}
-                    </Form>  
+                    </Form>
                     </div>
                 </Col>
                 <Col xs="8">
@@ -326,9 +326,9 @@ const [playError] = useSound(ErrorSound)
                     <Table>
                         <thead>
                             <tr>
-                                <th>Container Barcode</th>
+                                <th>Container barcode</th>
                                 <th>Container</th>
-                                <th>Checked Out</th>
+                                <th>Last checked out</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -344,9 +344,9 @@ const [playError] = useSound(ErrorSound)
                 : ''}
                 </div>
                 </Col>
-             </Row>   
-        </div> 
-        </Fragment>   
+             </Row>
+        </div>
+        </Fragment>
     )
 }
 
@@ -359,26 +359,26 @@ const NewContainer = props => {
           form.elements[index + 1].focus();
           event.preventDefault();
         }
-    }   
+    }
 
     return(
        <Form>
             <FormGroup>
-                <Input 
+                <Input
                     autoFocus={true}
-                    value={props.newBarcode} 
-                    placeholder="Enter new barcode..." 
-                    bsSize="lg" 
+                    value={props.newBarcode}
+                    placeholder="New barcode"
+                    bsSize="lg"
                     type="text"
                     onChange={e => props.setNewScannedBarcode(e)}
                     onKeyDown={handleEnter}
                 />
-            </FormGroup> 
+            </FormGroup>
             <FormGroup>
                 <Label>Location Needed?</Label>
-                <Input 
-                    value={props.locationNeeded} 
-                    bsSize="lg" 
+                <Input
+                    value={props.locationNeeded}
+                    bsSize="lg"
                     type="select"
                     onChange={e => props.setLocationNeeded(e.target.value)}
                     onKeyDown={handleEnter}
@@ -387,19 +387,19 @@ const NewContainer = props => {
                 <option value="true">Yes</option>
                 <option value="false">No</option>
                 </Input>
-            </FormGroup> 
+            </FormGroup>
             <FormGroup>
-                <Input 
-                    value={props.newBox} 
-                    placeholder="Enter container title..." 
-                    bsSize="lg" 
+                <Input
+                    value={props.newBox}
+                    placeholder="Container title"
+                    bsSize="lg"
                     type="text"
                     onChange={e => props.setNewBox(e.target.value)}
                     onKeyDown={handleEnter}
                 />
             </FormGroup>
             <Button onClick={e => props.manualUpload(e)}>Add new</Button>
-       </Form>     
+       </Form>
     )
 }
 

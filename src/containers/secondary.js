@@ -26,7 +26,7 @@ const dataReducer = (state, action) => {
             ...state,
             resultsList: action.results
         }
-        default: 
+        default:
         return state
     }
 }
@@ -72,7 +72,7 @@ function Secondary(){
     }
 
     const [playSuccess] = useSound(SuccessSound)
-    const [playError] = useSound(ErrorSound)    
+    const [playError] = useSound(ErrorSound)
 
     const update = async () => {
             const updateValue = {
@@ -85,14 +85,14 @@ function Secondary(){
                 dispatch({ type: 'ADD', results: [updateBarcode.results]})
             } else {
                 failure('There was a problem updating this container')
-            } 
+            }
     }
 
     const handleLocalStorage = async (key) => {
         const results = await localforage.getItem(key)
         return results
     }
-    
+
     const handleEnter = (event) => {
         if (event.keyCode === 13) {
           const form = event.target.form;
@@ -100,7 +100,7 @@ function Secondary(){
           form.elements[index + 1].focus();
           event.preventDefault();
         }
-    }   
+    }
 
     const success = message => {
         setLoading(false)
@@ -112,7 +112,7 @@ function Secondary(){
             closeOnClick: true,
         });
     }
-    
+
     const failure = message => {
         playError()
         setLoading(false)
@@ -146,46 +146,46 @@ function Secondary(){
                         setLoading(false)
                         setBarcode('')
                     }
-                }        
+                }
             } else {
                 failure("Could not find container record. Rescan")
-            }    
+            }
         } else {
             failure('Barcode must be 15 characters long and begin with 310')
-        }   
+        }
     }
-    
+
 
     return(
         <div className="container-fluid" style={{marginTop: "30px"}}>
         <ToastContainer />
-            <Row>  
+            <Row>
                 <Col xs="4">
                     <div className="menu sticky-top p-3 bg-light">
-                    <h1 className="display-4">Check In Without Location</h1>
+                    <h1 className="display-4">Check in without location</h1>
                     <Form>
                     <InputGroup>
-                                <Input 
-                                    type="text" 
+                                <Input
+                                    type="text"
                                     autoFocus={true}
-                                    value={barcode} 
-                                    placeholder="Enter barcode..." 
-                                    bsSize="lg" 
+                                    value={barcode}
+                                    placeholder="Container barcode"
+                                    bsSize="lg"
                                     onChange={e => setBarcodeInput(e)}
                                     onKeyDown={handleEnter}
                                 />
-                        {loading ?        
+                        {loading ?
                         <InputGroupAddon addonType="append">
                             <InputGroupText>
-                           
+
                            <Oval
                                 stroke="#000"
                                 style={{height: "2em"}}
                            />
                            </InputGroupText>
                         </InputGroupAddon>
-                        : ''}       
-                        </InputGroup>  
+                        : ''}
+                        </InputGroup>
                         {/* <br /> */}
                         {/* <Button color="primary" onClick={e => handleSubmit(e)}>Submit</Button> */}
 
@@ -201,9 +201,9 @@ function Secondary(){
                             {processingFailure ?
                                 <Alert color="danger">{failureMessage}</Alert>
                             : ''}
-                        </FormGroup>    
+                        </FormGroup>
                         </div>    */}
-                    </Form>  
+                    </Form>
                     </div>
                 </Col>
                 <Col xs="8">
@@ -237,8 +237,8 @@ function Secondary(){
                 : ''}
                 </div>
                 </Col>
-             </Row>   
-        </div>    
+             </Row>
+        </div>
     )
 }
 

@@ -7,18 +7,18 @@ function CheckOutForm(props)
     return(
        <Form>
            <FormGroup>
-                <Input 
+                <Input
                     autoFocus
-                    value={props.barcode} 
-                    placeholder="Enter barcode..." 
-                    bsSize="lg" 
+                    value={props.barcode}
+                    placeholder="Barcode"
+                    bsSize="lg"
                     onChange={e => props.setBarcode(e.target.value)}
                     onKeyDown={props.handleEnter}
                     ref={props.inputRef}
                 />
-           </FormGroup>    
+           </FormGroup>
             <Button color="primary" onClick={e => props.manualSearch(e)}>Update</Button>
-       </Form>    
+       </Form>
     )
 }
 
