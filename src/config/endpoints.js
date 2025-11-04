@@ -1,4 +1,4 @@
-export const base = "https://libsandbox.smith.edu/special_collections_inventory/web/"
+export const base = "http://localhost:8080/"
 
 export const container = {
     'get-containers' : "containers/get-containers",
