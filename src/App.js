@@ -6,8 +6,8 @@ import Header from './components/header'
 
 //Import containers
 import CheckIn from './containers/checkin'
-import CheckOut from './containers/checkout'
-import Secondary from './containers/secondary'
+// import CheckOut from './containers/checkout'
+// import Secondary from './containers/secondary'
 
 function App() {
 
@@ -20,12 +20,12 @@ function App() {
             <Route exact path="/">
               <CheckIn />
             </Route>
-            <Route path="/checkout">
+            {/* <Route path="/checkout">
               <CheckOut />
             </Route>
             <Route path="/secondarycheckin">
               <Secondary />
-            </Route>
+            </Route> */}
             <Route path="*">
               <CheckIn />
             </Route>
