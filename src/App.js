@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      <Router basename="/special_collections_inventory/app">
+      <Router basename="/special-collections-inventory/app">
         <Header />
         <div className="container-fluid">
           <Switch>

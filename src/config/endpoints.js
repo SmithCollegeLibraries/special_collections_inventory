@@ -1,4 +1,4 @@
-export const base = "https://libtools2.smith.edu/special_collections_inventory/web/"
+export const base = "https://libtools2.smith.edu/special-collections-inventory/web/"
 
 export const container = {
     'get-containers' : "containers/get-containers",

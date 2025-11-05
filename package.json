@@ -1,7 +1,7 @@
 {
-  "name": "special_collections_inventory_app",
+  "name": "special-collections-inventory",
   "version": "1.0.4",
-  "homepage": "https://libtools2.smith.edu/special_collections_inventory",
+  "homepage": "https://libtools2.smith.edu/special-collections-inventory",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
