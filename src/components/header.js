@@ -68,7 +68,7 @@ function Header() {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Special Collections Inventory (Version 1.1.0)</NavbarBrand>
+        <NavbarBrand href="/">Special Collections Inventory (Version 1.1.1)</NavbarBrand>
         <Nav className="mr-auto" navbar>
           <NavItem>
             <NavLink className="nav-link" activeStyle={{ color: '#007BFF' }} to="/">Check in</NavLink>
