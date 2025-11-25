@@ -95,7 +95,7 @@ function CheckIn() {
 
   useEffect(() => {
     let cancelled = false;
-    if (barcode && barcode !== '' && barcode.length === 15 && location && location !== '') {
+    if (barcode && barcode !== '' && barcode.length === 15 && location && location.length === 15) {
       setLoading(true);
       (async () => {
         try {
@@ -144,7 +144,7 @@ function CheckIn() {
         'location_barcode': location
       };
       // Send data to server
-      const verifyBarcode = await containers('', 'get-containers', {"container_barcode" : barcode})
+      const verifyBarcode = await containers('', 'get-containers', {"container_barcode" : barcode});
       // If server verifies that barcode exists then run through validations
       if (verifyBarcode && verifyBarcode.code === 201) {
         updateBarcode(updateValue);
