@@ -65,6 +65,19 @@ function CheckIn() {
     }
   }, [verified]);
 
+  // If the container input is 15 characters long, and the location is
+  // empty, then focus the container input, so user can scan location
+  // after scanning a container
+  useEffect(() => {
+    if (barcode && barcode.length === 15 && (!location || location === '')) {
+      if (inputEl && inputEl.current && typeof inputEl.current.focus === 'function') {
+        inputEl.current.focus();
+      } else {
+        const loc = document.querySelector('input[placeholder="Location"]');
+        if (loc && typeof loc.focus === 'function') loc.focus();
+      }
+    }
+  }, [barcode, location]);
 
   useEffect(() => {
     const getLocalItems = async () => {
@@ -278,7 +291,7 @@ function CheckIn() {
                   <tr>
                     <th>Container barcode</th>
                     <th>Container description</th>
-                    <th>Location barcode </th>
+                    <th>Location barcode</th>
                     <th>Location description</th>
                     {/* <th>Last checked out</th> */}
                     <th>Last checked in</th>
