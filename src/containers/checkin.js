@@ -187,13 +187,19 @@ function CheckIn() {
     return results;
   }
 
-  const handleEnter = (event) => {
+  const handleContainerEnter = (event) => {
     if (event.key === 'Enter' || event.keyCode === 13) {
       event.preventDefault();
       const value = (event.target.value || '');
       if (!(value.length === 15 && value.startsWith('310'))) {
         failure('Barcode must be 15 characters long and begin with 310.');
       }
+    }
+  }
+
+  const handleLocationEnter = (event) => {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+      event.preventDefault();
     }
   }
 
@@ -254,7 +260,7 @@ function CheckIn() {
                     bsSize="lg"
                     type="text"
                     onChange={e => setLocationInput(e)}
-                    onKeyDown={handleEnter}
+                    onKeyDown={handleLocationEnter}
                   />
                 </FormGroup>
               }
@@ -265,7 +271,7 @@ function CheckIn() {
                   placeholder="Container"
                   bsSize="lg"
                   onChange={e => setBarcodeInput(e)}
-                  onKeyDown={handleEnter}
+                  onKeyDown={handleContainerEnter}
                 />
               { loading ?
                 <InputGroupAddon addonType="append">
